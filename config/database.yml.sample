@@ -6,18 +6,18 @@ default: &default
 
 development:
   <<: *default
-  database: aquis_accounts_dev
+  database: hosp_dev
   username: postgres
   password: postgres
 
 test:
   <<: *default
-  database: aquis_accounts_test
+  database: hosp_test
   username: postgres
   password: postgresdb
 
 production:
   <<: *default
-  database: aquis_accounts_production
+  database: hosp_production
   username: postgres
   password: postgresdb
