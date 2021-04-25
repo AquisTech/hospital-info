@@ -1,0 +1,17 @@
+= bootstrap_form_with(model: @project, validate: true) do |f|
+  = f.alert_message "Please fix the errors below:"
+  = f.text_field :name
+  = f.url_field :repo_url
+  = f.hidden_field :owner_type, value: 'Client'
+  = f.select :owner_id, options_for_select(Client.all.map { |c| [c.name, c.id] })
+  .form-row
+    = f.select :quote_amount_currency, Money::Currency.table.values.map{|c| c[:iso_code]}.sort, wrapper_class: 'col-3'
+    = f.number_field :quote_amount_cents, value: (f.object.quote_amount_cents / 100), label: 'Quote Amount', wrapper_class: 'col-9'
+  .form-row
+    = f.select :order_amount_currency, Money::Currency.table.values.map{|c| c[:iso_code]}.sort, wrapper_class: 'col-3'
+    = f.number_field :order_amount_cents, value: (f.object.order_amount_cents / 100), label: 'Final Order Amount', wrapper_class: 'col-9'
+  = f.select :status, enum_to_options(Project.statuses, f.object.status) if @project.persisted?
+
+  = f.primary 'Save'
+  = link_to 'Show', @project, class: 'btn btn-info' if @project.persisted?
+  = link_to 'Back', projects_path, class: 'btn btn-outline-primary'

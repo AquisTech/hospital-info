@@ -1,0 +1,23 @@
+%table.table
+  %thead
+    %tr
+      %th Project
+      %th User
+      %th Start date
+      %th End date
+      %th Client rate
+      %th User rate
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - allocations.each do |allocation|
+      %tr
+        %td= link_to allocation.project.name, allocation.project
+        %td= link_to allocation.user.full_name, allocation.user
+        %td= allocation.start_date
+        %td= allocation.end_date
+        %td= moneyfy allocation.client_rate
+        %td= moneyfy allocation.user_rate
+        %td= link_to 'Show', allocation, class: 'btn btn-info'
+        %td= link_to 'Edit', edit_allocation_path(allocation), class: 'btn btn-primary'
+        %td= link_to 'Delete', allocation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

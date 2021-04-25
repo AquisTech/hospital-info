@@ -1,0 +1,8 @@
+= f.fields :identities do |ident|
+  = render 'shared/address_partials/forms/identity_form', ident: ident
+= f.fields :email_addresses do |ea|
+  = render 'shared/address_partials/forms/email_address_form', ea: ea
+= f.fields :contact_numbers do |cn|
+  = render 'shared/address_partials/forms/contact_number_form', cn: cn
+= f.fields :addresses do |ad|
+  = render 'shared/address_partials/forms/address_form', ad: ad

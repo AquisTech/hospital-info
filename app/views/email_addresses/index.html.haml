@@ -1,0 +1,17 @@
+%h1 Listing email_addresses
+
+%table
+  %thead
+    %tr
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - @email_addresses.each do |email_address|
+      %tr
+        %td= link_to 'Show', email_address
+        %td= link_to 'Edit', edit_email_address_path(email_address)
+        %td= link_to 'Delete', email_address, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Email address', new_email_address_path

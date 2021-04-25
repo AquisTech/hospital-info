@@ -1,0 +1,21 @@
+%h1
+  <%= human_name.pluralize %>
+  = link_to '+', new_<%= singular_table_name %>_path, class: 'btn btn-primary rounded-circle'
+
+%table.table
+  %thead
+    %tr
+<% for attribute in attributes -%>
+      %th <%= attribute.human_name %>
+<% end -%>
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      %tr
+<% for attribute in attributes -%>
+        %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+        %td= link_to 'Show', <%= singular_table_name %>, class: 'btn btn-info'
+        %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-primary'
+        %td= link_to 'Delete', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

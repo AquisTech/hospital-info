@@ -1,0 +1,15 @@
+.form-row
+  = ad.select :address_type, enum_to_options(Address.address_types, ad.object.address_type), wrapper_class: 'col-9'
+  = ad.form_group :primary, label: { text: '&nbsp'.html_safe }, class: 'col-3' do
+    = ad.check_box :primary, label: 'Primary?', wrapper_class: 'mt-2'
+= ad.text_field :address_line_1
+= ad.text_field :address_line_2
+.form-row
+  = ad.text_field :area, wrapper: { class: 'col' }
+  = ad.text_field :city, wrapper: { class: 'col' }
+.form-row
+  = ad.text_field :district, wrapper: { class: 'col' }
+  = ad.text_field :state, wrapper: { class: 'col' }
+.form-row
+  = ad.select :country, options_for_select(IsoCountryCodes.all.map(&:name)), wrapper: { class: 'col' }
+  = ad.text_field :pincode, wrapper: { class: 'col' }

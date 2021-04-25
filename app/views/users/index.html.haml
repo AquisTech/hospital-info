@@ -1,0 +1,21 @@
+%h1
+  Users
+  = link_to '+', new_user_path, class: 'btn btn-primary rounded-circle'
+
+%table.table
+  %thead
+    %tr
+      %th First Name
+      %th Last Name
+      %th Email
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.first_name
+        %td= user.last_name
+        %td= mail_to(user.email)
+        %td= link_to 'Show', user, class: 'btn btn-info'
+        %td= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary'
+        %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

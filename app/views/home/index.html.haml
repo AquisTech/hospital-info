@@ -1,0 +1,136 @@
+%h1 Dashboard
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3
+  .col.mb-4
+    .card
+      .card-header Task List
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Leads', Client.count)
+        %li.list-group-item= text_with_badge('Leads Converted', Client.count)
+        %li.list-group-item= text_with_badge('In Development', Client.count)
+        %li.list-group-item= text_with_badge('In Maintenance', Client.count)
+        %li.list-group-item= text_with_badge('Completed', Client.count)
+      .card-footer
+        = text_with_badge('Total', Client.count)
+  .col.mb-4
+    .card
+      .card-header Onboarding Checks
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Leads', Client.count)
+        %li.list-group-item= text_with_badge('Leads Converted', Client.count)
+        %li.list-group-item= text_with_badge('In Development', Client.count)
+        %li.list-group-item= text_with_badge('In Maintenance', Client.count)
+        %li.list-group-item= text_with_badge('Completed', Client.count)
+      .card-footer
+        = text_with_badge('Total', Client.count)
+  .col.mb-4
+    .card
+      .card-header Deboarding Checks
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Leads', Client.count)
+        %li.list-group-item= text_with_badge('Leads Converted', Client.count)
+        %li.list-group-item= text_with_badge('In Development', Client.count)
+        %li.list-group-item= text_with_badge('In Maintenance', Client.count)
+        %li.list-group-item= text_with_badge('Completed', Client.count)
+      .card-footer
+        = text_with_badge('Total', Client.count)
+  .col.mb-4
+    .card
+      .card-header Clients
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Leads', Client.count)
+        %li.list-group-item= text_with_badge('Leads Converted', Client.count)
+        %li.list-group-item= text_with_badge('In Development', Client.count)
+        %li.list-group-item= text_with_badge('In Maintenance', Client.count)
+        %li.list-group-item= text_with_badge('Completed', Client.count)
+      .card-footer
+        = text_with_badge('Total', Client.count)
+  .col.mb-4
+    .card
+      .card-header Projects
+      %ul.list-group.list-group-flush
+        - Project.statuses.keys.each do |status|
+          %li.list-group-item= text_with_badge(status.titleize, Project.send(status).count)
+      .card-footer
+        = text_with_badge('Total', Project.count)
+  .col.mb-4
+    .card
+      .card-header Users
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Admins', User.count)
+        %li.list-group-item= text_with_badge('Active Employees', User.count)
+        %li.list-group-item= text_with_badge('Active Freelancers', User.count)
+        %li.list-group-item= text_with_badge('Vendor Representative', User.count)
+        %li.list-group-item= text_with_badge('Client Representative', User.count)
+        %li.list-group-item= text_with_badge('Pool of Freelancers', User.count)
+      .card-footer
+        = text_with_badge('Total', User.count)
+  .col.mb-4
+    .card
+      .card-header Allocations
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Active Allocations', User.count)
+        %li.list-group-item= text_with_badge('Expiring this month', User.count)
+        %li.list-group-item= text_with_badge('Unallocated', User.count)
+      .card-footer
+        = text_with_badge('Total', User.count)
+  .col.mb-4
+    .card
+      .card-header Work Times
+      %ul.list-group.list-group-flush
+        %li.list-group-item= text_with_badge('Unapproved Hours', User.count)
+        %li.list-group-item= text_with_badge('Approved/Unbilled Hours', User.count)
+        %li.list-group-item= text_with_badge('Billed to Client Hours', User.count)
+        %li.list-group-item= text_with_badge('Held Payment Hours', User.count)
+        %li.list-group-item= text_with_badge('Paid to Users Hours', User.count)
+      .card-footer
+        = text_with_badge('Total', User.count)
+  .col.mb-4
+    .card
+      .card-header Invoices
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Salaries
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Bank Statements
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Sales
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Purchases
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Expenses
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Compliances
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+  .col.mb-4
+    .card
+      .card-header Income Tax
+      .card-body
+        %h5.card-title Coming soon...
+      .card-footer
+

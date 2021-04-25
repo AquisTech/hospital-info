@@ -1,0 +1,9 @@
+= bootstrap_form_with(model: @<%= singular_table_name %>, validate: true) do |f|
+  = f.alert_message "Please fix the errors below:"
+<% for attribute in attributes -%>
+  = f.<%= attribute.field_type %> :<%= attribute.name %>
+<% end -%>
+
+  = f.primary 'Save'
+  = link_to 'Show', @<%= singular_table_name %>, class: 'btn btn-info' if @<%= singular_table_name %>.persisted?
+  = link_to 'Back', <%= index_helper %>_path, class: 'btn btn-outline-primary'

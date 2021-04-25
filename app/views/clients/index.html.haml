@@ -1,0 +1,21 @@
+%h1
+  Clients
+  = link_to '+', new_client_path, class: 'btn btn-primary rounded-circle'
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Website
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= client.name
+        %td= link_to client.website, client.website
+        %td= link_to 'Show', client, class: 'btn btn-info'
+        %td= link_to 'Edit', edit_client_path(client), class: 'btn btn-primary'
+        %td= link_to 'Delete', client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+

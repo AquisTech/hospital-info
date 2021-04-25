@@ -1,0 +1,22 @@
+- resource.identities.each do |ident|
+  %dt= ident.identity_type.upcase_first
+  %dd= ident.value
+- resource.email_addresses.each do |ea|
+  %dt= "#{ea.email_type.upcase_first} Email"
+  %dd= mail_to(ea.email)
+- resource.contact_numbers.each do |cn|
+  %dt= "#{cn.note} #{cn.contact_type.upcase_first}".squish
+  %dd= phone_to(cn.number.gsub(/^[0]*/, '+').phony_formatted(format: :international, spaces: '-'))
+- resource.addresses.each do |ad|
+  %details
+    %summary
+      %b= "#{ad.address_type.upcase_first} Address"
+    %dt Address
+    %dd
+      = ad.address_line_1
+      %br
+      = ad.address_line_2
+      %br
+      = "#{ad.area}, #{ad.city}, #{ad.district},"
+      %br
+      = "#{ad.state}, #{ad.country} - #{ad.pincode}"

@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+
+development:
+  <<: *default
+  database: aquis_accounts_dev
+  username: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: aquis_accounts_test
+  username: postgres
+  password: postgresdb
+
+production:
+  <<: *default
+  database: aquis_accounts_production
+  username: postgres
+  password: postgresdb

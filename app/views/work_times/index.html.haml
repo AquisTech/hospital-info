@@ -1,0 +1,16 @@
+%h1
+  Work times
+  = add_new_button
+
+%table#dttb-work_times.responsive.nowrap.table.table-hover{ data: { source: datatable_work_times_path(format: :json) } }
+  %thead
+    %tr
+      %th Project
+      %th User
+      %th Work date
+      %th Hours
+      %th Minutes
+      %th Computed hours
+      %th Status
+      %th.text-center{colspan: 3} Actions
+  %tbody

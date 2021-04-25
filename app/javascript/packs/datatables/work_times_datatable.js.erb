@@ -1,0 +1,8 @@
+$(document).on('turbolinks:load', function() {
+  console.log('***********0)))))))))))))))0000')
+  if (!$.fn.DataTable.isDataTable('table#dttb-work_times')) {
+    $('table#dttb-work_times').DataTable({
+      columns: <%= WorkTimesDatatable.new({}).js_view_columns %>
+    });
+  }
+});
