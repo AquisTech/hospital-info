@@ -36,7 +36,6 @@ gem 'money-rails'
 gem 'bootstrap_form'
 gem 'has_contact_number', '0.4.0'
 gem 'ajax-datatables-rails'
-gem 'client_side_validations', github: 'AquisTech/client_side_validations', branch: 'bugfix-827-nested-form-breaks-for-fields'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
