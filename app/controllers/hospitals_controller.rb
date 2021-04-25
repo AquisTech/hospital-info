@@ -71,7 +71,8 @@ class HospitalsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def hospital_params
       params.require(:hospital).permit(
-        :name, :website,
+        :name, :website, :vacant_gen_beds, :occupied_gen_beds, :vacant_o2_beds, :occupied_o2_beds,
+        :vacant_icu_beds, :occupied_icu_beds, :vacant_ventilators, :occupied_ventilators,
         identities_attributes: [:id, :identity_type, :value, :_destroy],
         email_addresses_attributes: [:id, :email_type, :email, :_destroy],
         contact_numbers_attributes: [:id, :note, :contact_type, *contact_number_attributes(:number), :_destroy],

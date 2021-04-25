@@ -3,6 +3,18 @@
   = f.text_field :name
   = f.url_field :website
   = render 'shared/address_partials/forms/nested_forms', f: f
+  .form-row
+    = f.number_field :vacant_gen_beds, wrapper_class: 'col'
+    = f.number_field :occupied_gen_beds, wrapper_class: 'col'
+  .form-row
+    = f.number_field :vacant_o2_beds, label: 'Vacant Oxygen Beds', wrapper_class: 'col'
+    = f.number_field :occupied_o2_beds, label: 'Occupied Oxygen Beds', wrapper_class: 'col'
+  .form-row
+    = f.number_field :vacant_icu_beds, label: 'Vacant ICU Beds', wrapper_class: 'col'
+    = f.number_field :occupied_icu_beds, label: 'Occupied ICU Beds', wrapper_class: 'col'
+  .form-row
+    = f.number_field :vacant_ventilators, wrapper_class: 'col'
+    = f.number_field :occupied_ventilators, wrapper_class: 'col'
   = f.primary 'Save'
   = link_to 'Show', @hospital, class: 'btn btn-info' if @hospital.persisted?
   = link_to 'Back', hospitals_path, class: 'btn btn-outline-primary'

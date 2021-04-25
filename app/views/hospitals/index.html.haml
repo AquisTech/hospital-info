@@ -7,6 +7,10 @@
     %tr
       %th Name
       %th Website
+      %th{ colspan: 2 } Gen Beds
+      %th{ colspan: 2 } Oxygen Beds
+      %th{ colspan: 2 } ICU Beds
+      %th{ colspan: 2 } Ventilators
       %th.text-center{colspan: 3} Actions
 
   %tbody
@@ -14,6 +18,14 @@
       %tr
         %td= hospital.name
         %td= link_to hospital.website, hospital.website
+        %td.text-success= hospital.vacant_gen_beds
+        %td.text-danger= hospital.occupied_gen_beds
+        %td.text-success= hospital.vacant_o2_beds
+        %td.text-danger= hospital.occupied_o2_beds
+        %td.text-success= hospital.vacant_icu_beds
+        %td.text-danger= hospital.occupied_icu_beds
+        %td.text-success= hospital.vacant_ventilators
+        %td.text-danger= hospital.occupied_ventilators
         %td= link_to 'Show', hospital, class: 'btn btn-info'
         %td= link_to 'Edit', edit_hospital_path(hospital), class: 'btn btn-primary'
         %td= link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
