@@ -1,6 +1,6 @@
-class CreateClients < ActiveRecord::Migration[6.0]
+class CreateHospitals < ActiveRecord::Migration[6.0]
   def change
-    create_table :clients do |t|
+    create_table :hospitals do |t|
       t.string :name, null: false
       t.string :website
 

@@ -17,11 +17,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user.identities.build unless @user.identities.exists?
     @user.email_addresses.build unless @user.email_addresses.exists?
     @user.contact_numbers.build unless @user.contact_numbers.exists?
-    @user.addresses.build unless @user.addresses.exists?
-    @user.build_bank_account unless @user.bank_account.present?
   end
 
   # POST /users or /users.json
@@ -73,11 +70,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(
         :first_name, :last_name,
-        identities_attributes: [:id, :identity_type, :value, :_destroy],
         email_addresses_attributes: [:id, :email_type, :email, :_destroy],
-        contact_numbers_attributes: [:id, :note, :contact_type, *contact_number_attributes(:number), :_destroy],
-        addresses_attributes: [:id, :address_type, :primary, :address_line_1, :address_line_2, :area, :city, :district, :state, :country, :pincode, :_destroy],
-        bank_account_attributes: [:id, :account_number, :account_holder_name, :code_type, :code, :branch_name]
+        contact_numbers_attributes: [:id, :note, :contact_type, *contact_number_attributes(:number), :_destroy]
       )
     end
 end

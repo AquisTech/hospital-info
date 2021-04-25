@@ -1,0 +1,8 @@
+= bootstrap_form_with(model: @hospital) do |f|
+  = f.alert_message "Please fix the errors below:"
+  = f.text_field :name
+  = f.url_field :website
+  = render 'shared/address_partials/forms/nested_forms', f: f
+  = f.primary 'Save'
+  = link_to 'Show', @hospital, class: 'btn btn-info' if @hospital.persisted?
+  = link_to 'Back', hospitals_path, class: 'btn btn-outline-primary'

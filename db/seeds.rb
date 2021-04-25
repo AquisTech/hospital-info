@@ -10,6 +10,8 @@
 admin = User.where(email: 'admin@example.com').first_or_initialize
 admin.password = 'admin@123'
 admin.password_confirmation = 'admin@123'
+admin.first_name = 'Admin'
+admin.last_name = 'User'
 if admin.save
   admin.confirm
   puts 'Admin created!'

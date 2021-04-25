@@ -1,0 +1,10 @@
+%h1 Hospital Details
+%dl
+  %dt Name
+  %dd= @hospital.name
+  %dt Website
+  %dd= @hospital.website
+  = render 'shared/address_partials/show/details', resource: @hospital
+
+= link_to 'Edit', edit_hospital_path(@hospital), class: 'btn btn-primary'
+= link_to 'Back', hospitals_path, class: 'btn btn-outline-primary'

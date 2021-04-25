@@ -1,8 +1,0 @@
-= ba.text_field :account_number
-= ba.text_field :account_holder_name
-.form-group
-  %label Code
-  .input-group
-    = ba.select_without_bootstrap :code_type, enum_to_options(BankAccount.code_types, ba.object.code_type), {}, {class: 'form-control'}
-    = ba.text_field_without_bootstrap :code, class: 'form-control'
-= ba.text_field :branch_name

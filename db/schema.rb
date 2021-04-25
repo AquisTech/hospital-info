@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_143826) do
+ActiveRecord::Schema.define(version: 2021_04_10_083617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,41 +31,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_143826) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
-  end
-
-  create_table "allocations", force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "client_rate_cents", default: 0, null: false
-    t.string "client_rate_currency", default: "USD", null: false
-    t.integer "user_rate_cents", default: 0, null: false
-    t.string "user_rate_currency", default: "USD", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_allocations_on_project_id"
-    t.index ["user_id"], name: "index_allocations_on_user_id"
-  end
-
-  create_table "bank_accounts", force: :cascade do |t|
-    t.string "account_number"
-    t.string "account_holder_name"
-    t.integer "code_type"
-    t.string "code"
-    t.string "branch_name"
-    t.string "resource_type", null: false
-    t.bigint "resource_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["resource_type", "resource_id"], name: "index_bank_accounts_on_resource_type_and_resource_id"
-  end
-
-  create_table "clients", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "website"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "contact_numbers", force: :cascade do |t|
@@ -89,6 +54,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_143826) do
     t.index ["emailable_type", "emailable_id"], name: "index_email_addresses_on_emailable_type_and_emailable_id"
   end
 
+  create_table "hospitals", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "website"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "identities", force: :cascade do |t|
     t.integer "identity_type", null: false
     t.string "value", null: false
@@ -97,21 +69,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_143826) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["resource_type", "resource_id"], name: "index_identities_on_resource_type_and_resource_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "repo_url"
-    t.string "owner_type", null: false
-    t.bigint "owner_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", default: 0
-    t.integer "quote_amount_cents", default: 0, null: false
-    t.string "quote_amount_currency", default: "USD", null: false
-    t.integer "order_amount_cents", default: 0, null: false
-    t.string "order_amount_currency", default: "USD", null: false
-    t.index ["owner_type", "owner_id"], name: "index_projects_on_owner"
   end
 
   create_table "users", force: :cascade do |t|
@@ -142,19 +99,4 @@ ActiveRecord::Schema.define(version: 2021_04_16_143826) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "work_times", force: :cascade do |t|
-    t.bigint "allocation_id", null: false
-    t.date "work_date"
-    t.integer "hours"
-    t.integer "minutes"
-    t.float "computed_hours"
-    t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["allocation_id"], name: "index_work_times_on_allocation_id"
-  end
-
-  add_foreign_key "allocations", "projects"
-  add_foreign_key "allocations", "users"
-  add_foreign_key "work_times", "allocations"
 end

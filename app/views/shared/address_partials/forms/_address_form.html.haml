@@ -11,5 +11,5 @@
   = ad.text_field :district, wrapper: { class: 'col' }
   = ad.text_field :state, wrapper: { class: 'col' }
 .form-row
-  = ad.select :country, options_for_select(IsoCountryCodes.all.map(&:name)), wrapper: { class: 'col' }
+  = ad.select :country, options_for_select(IsoCountryCodes.all.map(&:name), 'India'), wrapper: { class: 'col' }
   = ad.text_field :pincode, wrapper: { class: 'col' }

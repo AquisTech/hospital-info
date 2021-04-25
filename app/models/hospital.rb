@@ -1,4 +1,4 @@
-class Client < ApplicationRecord
+class Hospital < ApplicationRecord
   has_many :identities, as: :resource
   accepts_nested_attributes_for :identities
   has_many :addresses, as: :addressable
@@ -7,7 +7,6 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :contact_numbers
   has_many :email_addresses, as: :emailable
   accepts_nested_attributes_for :email_addresses
-  has_many :projects, as: :owner
 
   validates :name, presence: true
 end

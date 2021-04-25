@@ -1,5 +1,5 @@
 .form-group
   %label Email
   .input-group
-    = ea.select_without_bootstrap :email_type, enum_to_options(EmailAddress.email_types, ea.object.email_type), {prompt: 'Select'}, {class: 'form-control'}
+    = ea.select_without_bootstrap :email_type, enum_to_options(EmailAddress.email_types, ea.object.email_type), {}, {class: 'form-control'}
     = ea.email_field_without_bootstrap :email, class: 'form-control'

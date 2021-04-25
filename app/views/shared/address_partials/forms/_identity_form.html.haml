@@ -1,5 +1,5 @@
 .form-group
   %label Identity
   .input-group
-    = ident.select_without_bootstrap :identity_type, enum_to_options(Identity.identity_types, ident.object.identity_type), {prompt: 'Select'}, {class: 'form-control'}
+    = ident.select_without_bootstrap :identity_type, enum_to_options(Identity.identity_types, ident.object.identity_type), {}, {class: 'form-control'}
     = ident.text_field_without_bootstrap :value, class: 'form-control'

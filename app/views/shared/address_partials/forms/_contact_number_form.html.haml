@@ -2,6 +2,6 @@
   = cn.select :contact_type, enum_to_options(ContactNumber.contact_types, cn.object.contact_type), wrapper: { class: 'col' }
   = cn.text_field :note, placeholder: 'Office, Personal, Whatsapp, etc', label: 'Purpose', wrapper: { class: 'col' }
 .form-row
-  = cn.select :number_isd_code, options_for_isd_code_select, label: 'ISD Code', wrapper: { class: 'col' }
+  = cn.select :number_isd_code, options_for_select(options_for_isd_code_select, cn.object.number_isd_code || '0091'), label: 'ISD Code', wrapper: { class: 'col' }
   = cn.telephone_field :number_without_isd_code, label: 'Number', wrapper: { class: 'col' }
 = cn.static_control :number, label_as_placeholder: true, class: 'd-none'

@@ -3,23 +3,10 @@
   %dt Name
   %dd= @user.full_name
   %dt Email
-  %dd= @user.email
-  = render 'shared/address_partials/show/details', resource: @user
-  %details
-    %summary
-      %b Bank Account Details
-    %dt Account Holder's Name
-    %dd= @user.bank_account.account_holder_name
-    %dt Account Number
-    %dd= @user.bank_account.account_number
-    %dt= @user.bank_account.code_type
-    %dd= @user.bank_account.code
-    %dt Branch Name
-    %dd= @user.bank_account.branch_name
-  %details
-    %summary
-      %b Allocations
-    = render 'allocations/table', allocations: @user.allocations
+  %dd= mail_to(@user.email)
+  - @user.contact_numbers.each do |cn|
+    %dt= "#{cn.note} #{cn.contact_type.upcase_first}".squish
+    %dd= phone_to(cn.number.gsub(/^[0]*/, '+').phony_formatted(format: :international, spaces: '-'))
 
 = link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary'
 = link_to 'Back', users_path, class: 'btn btn-outline-primary'

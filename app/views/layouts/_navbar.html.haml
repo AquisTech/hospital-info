@@ -7,24 +7,18 @@
       %ul.navbar-nav.mr-auto
         %li.nav-item{ class: active_class_to(root_path) }
           = link_to 'Home', root_path, class: 'nav-link'
-        %li.nav-item{ class: active_class_to(clients_path) }
-          = link_to 'Clients', clients_path, class: 'nav-link'
-        %li.nav-item{ class: active_class_to(projects_path) }
-          = link_to 'Projects', projects_path, class: 'nav-link'
+        %li.nav-item{ class: active_class_to(hospitals_path) }
+          = link_to 'Hospitals', hospitals_path, class: 'nav-link'
         %li.nav-item{ class: active_class_to(users_path) }
           = link_to 'Users', users_path, class: 'nav-link'
-        %li.nav-item{ class: active_class_to(allocations_path) }
-          = link_to 'Allocations', allocations_path, class: 'nav-link'
-        %li.nav-item{ class: active_class_to(work_times_path) }
-          = link_to 'Work Times', work_times_path, class: 'nav-link'
-        %li.nav-item.dropdown
-          %a#internal-entities-dropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"}, data: {toggle: "dropdown"}, href: "#"} Internal Entities
-          .dropdown-menu{"aria-labelledby": "internal-entities-dropdown"}
-            = link_to 'Addresses', addresses_path, class: 'dropdown-item'
-            = link_to 'Bank Accounts', bank_accounts_path, class: 'dropdown-item'
-            = link_to 'Contact Numbers', contact_numbers_path, class: 'dropdown-item'
-            = link_to 'Email Addresses', email_addresses_path, class: 'dropdown-item'
-            = link_to 'Identities', identities_path, class: 'dropdown-item'
+        - if false
+          %li.nav-item.dropdown
+            %a#internal-entities-dropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"}, data: {toggle: "dropdown"}, href: "#"} Internal Entities
+            .dropdown-menu{"aria-labelledby": "internal-entities-dropdown"}
+              = link_to 'Addresses', addresses_path, class: 'dropdown-item'
+              = link_to 'Contact Numbers', contact_numbers_path, class: 'dropdown-item'
+              = link_to 'Email Addresses', email_addresses_path, class: 'dropdown-item'
+              = link_to 'Identities', identities_path, class: 'dropdown-item'
       %span.navbar-text= current_user.full_name
     %ul.navbar-nav
       = render 'devise/menu/login_items'

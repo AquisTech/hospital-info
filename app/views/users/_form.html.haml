@@ -1,11 +1,11 @@
-= bootstrap_form_with(model: @user, validate: true) do |f|
+= bootstrap_form_with(model: @user) do |f|
   = f.alert_message "Please fix the errors below:"
   .form-row
     = f.text_field :first_name, required: true, wrapper: { class: 'col' }
     = f.text_field :last_name, wrapper: { class: 'col' }
-  = render 'shared/address_partials/forms/nested_forms', f: f
-  = f.fields :bank_account do |ba|
-    = render 'users/nested_forms/bank_account_form', ba: ba
+  = f.email_field :email
+  = f.fields :contact_numbers do |cn|
+    = render 'shared/address_partials/forms/contact_number_form', cn: cn
   = f.primary 'Save'
   = link_to 'Show', @user, class: 'btn btn-info' if @user.persisted?
   = link_to 'Back', users_path, class: 'btn btn-outline-primary'

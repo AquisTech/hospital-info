@@ -1,0 +1,19 @@
+%h1
+  Hospitals
+  = link_to '+', new_hospital_path, class: 'btn btn-primary rounded-circle'
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Website
+      %th.text-center{colspan: 3} Actions
+
+  %tbody
+    - @hospitals.each do |hospital|
+      %tr
+        %td= hospital.name
+        %td= link_to hospital.website, hospital.website
+        %td= link_to 'Show', hospital, class: 'btn btn-info'
+        %td= link_to 'Edit', edit_hospital_path(hospital), class: 'btn btn-primary'
+        %td= link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
