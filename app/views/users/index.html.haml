@@ -8,7 +8,7 @@
       %th First Name
       %th Last Name
       %th Email
-      %th.text-center{colspan: 3} Actions
+      %th.text-center{colspan: 4} Actions
 
   %tbody
     - @users.each do |user|
@@ -16,6 +16,10 @@
         %td= user.first_name
         %td= user.last_name
         %td= mail_to(user.email)
+        %td
+          - unless user.confirmed?
+            = form_with(url: confirm_user_path(user), method: :patch) do |u|
+              = u.submit 'Confirm User', class: 'btn btn-outline-primary'
         %td= link_to 'Show', user, class: 'btn btn-info'
         %td= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary'
         %td= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
