@@ -1,9 +1,9 @@
 .card
   .card-body
     = bootstrap_form_with(url: filter_hospitals_path) do |f|
-      = f.search_field :name
+      = f.search_field :name, placeholder: 'Hospital Name'
       = f.search_field :pincode
-      .form-row
+      .form-row.form-group
         = f.check_box :gen_beds, label: 'General Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
         = f.check_box :o2_beds, label: 'Oxygen Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
         = f.check_box :icu_beds, label: 'ICU Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
