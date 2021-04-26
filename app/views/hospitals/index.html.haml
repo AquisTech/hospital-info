@@ -2,11 +2,10 @@
   Hospitals
   = link_to '+', new_hospital_path, class: 'btn btn-primary rounded-circle'
 
-%table.table
+%table.table.table-hover.table-bordered.table-striped
   %thead
     %tr
       %th Name
-      %th Website
       %th{ colspan: 2 } Gen Beds
       %th{ colspan: 2 } Oxygen Beds
       %th{ colspan: 2 } ICU Beds
@@ -17,7 +16,6 @@
     - @hospitals.each do |hospital|
       %tr
         %td= hospital.name
-        %td= link_to hospital.website, hospital.website
         %td.text-success= hospital.vacant_gen_beds || '-'
         %td.text-danger= hospital.occupied_gen_beds || '-'
         %td.text-success= hospital.vacant_o2_beds || '-'
