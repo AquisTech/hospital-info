@@ -1,1 +1,5 @@
-$('#flash-messages').html('<%=j flash_messages %>')
+$('#flash-messages').css({'position': 'absolute', 'top': 0, 'z-index': 10000});
+$('#flash-messages').html('<%=j flash_messages %>');
+$("#flash-messages .alert").fadeTo(1000, 500).slideUp(500, function() {
+  $("#flash-messages .alert").slideUp(500);
+});
