@@ -12,7 +12,7 @@
     = render 'layouts/navbar'
 
     %main.container.mt-5.py-2{:role => "main"}
-      = flash_messages
+      #flash-messages= flash_messages
       = yield
     %footer.footer.mt-auto.py-3.bg-dark
       .container.text-center

@@ -48,8 +48,10 @@ class HospitalsController < ApplicationController
   def update
     respond_to do |format|
       if @hospital.update(hospital_params)
-        format.html { redirect_to @hospital, notice: "Hospital was successfully updated." }
+        flash[:notice] = "Hospital was successfully updated."
+        format.html { redirect_to @hospital }
         format.json { render :show, status: :ok, location: @hospital }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @hospital.errors, status: :unprocessable_entity }

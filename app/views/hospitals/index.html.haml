@@ -2,28 +2,52 @@
   Hospitals
   = link_to '+', new_hospital_path, class: 'btn btn-primary rounded-circle'
 
-%table.table.table-hover.table-bordered.table-striped
+%table.table.table-hover.table-bordered.table-striped.table-sm
   %thead
     %tr
-      %th Name
-      %th{ colspan: 2 } Gen Beds
-      %th{ colspan: 2 } Oxygen Beds
-      %th{ colspan: 2 } ICU Beds
-      %th{ colspan: 2 } Ventilators
-      %th.text-center{colspan: 3} Actions
-
+      %th.text-center{ rowspan: 2 } Name
+      %th.text-center{ colspan: 2 } Gen Beds
+      %th.text-center{ colspan: 2 } Oxygen Beds
+      %th.text-center{ colspan: 2 } ICU Beds
+      %th.text-center{ colspan: 2 } Ventilators
+      %th.text-center{ rowspan: 2, colspan: 3 } Actions
+    %tr
+      %th.table-success.text-success Vacant
+      %th.table-danger.text-danger Occupied
+      %th.table-success.text-success Vacant
+      %th.table-danger.text-danger Occupied
+      %th.table-success.text-success Vacant
+      %th.table-danger.text-danger Occupied
+      %th.table-success.text-success Vacant
+      %th.table-danger.text-danger Occupied
   %tbody
     - @hospitals.each do |hospital|
       %tr
         %td= hospital.name
-        %td.text-success= hospital.vacant_gen_beds || '-'
-        %td.text-danger= hospital.occupied_gen_beds || '-'
-        %td.text-success= hospital.vacant_o2_beds || '-'
-        %td.text-danger= hospital.occupied_o2_beds || '-'
-        %td.text-success= hospital.vacant_icu_beds || '-'
-        %td.text-danger= hospital.occupied_icu_beds || '-'
-        %td.text-success= hospital.vacant_ventilators || '-'
-        %td.text-danger= hospital.occupied_ventilators || '-'
+        %td.table-success
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :vacant_gen_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-danger
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :occupied_gen_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-success
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :vacant_o2_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-danger
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :occupied_o2_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-success
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :vacant_icu_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-danger
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :occupied_icu_beds, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-success
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :vacant_ventilators, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
+        %td.table-danger
+          = bootstrap_form_with(model: hospital, method: :patch) do |f|
+            = f.text_field :occupied_ventilators, hide_label: true, style: 'width: 60px;', wrapper_class: 'mb-0'
         %td= link_to 'Show', hospital, class: 'btn btn-info'
         %td= link_to 'Edit', edit_hospital_path(hospital), class: 'btn btn-primary'
         %td= link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
