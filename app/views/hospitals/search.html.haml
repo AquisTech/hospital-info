@@ -1,0 +1,22 @@
+.card
+  .card-body
+    = bootstrap_form_with(url: filter_hospitals_path) do |f|
+      = f.search_field :name
+      = f.search_field :pincode
+      .form-row
+        = f.check_box :gen_beds, label: 'General Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
+        = f.check_box :o2_beds, label: 'Oxygen Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
+        = f.check_box :icu_beds, label: 'ICU Beds Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
+        = f.check_box :ventilators, label: 'Ventilators Available?', inline: true, wrapper_class: 'col-sm-12 col-md'
+      = f.primary :filter
+%table.table.table-hover.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th{ colspan: 2 } Gen Beds
+      %th{ colspan: 2 } Oxygen Beds
+      %th{ colspan: 2 } ICU Beds
+      %th{ colspan: 2 } Ventilators
+      %th.text-center Actions
+
+  = render 'search_records'

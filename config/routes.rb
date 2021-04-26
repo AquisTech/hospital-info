@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :contact_numbers
   resources :addresses
   resources :identities
-  resources :hospitals
+  resources :hospitals do
+    get :search, on: :collection
+    post :search, on: :collection, as: :filter
+  end
   devise_for :users
   resources :users do
     patch :confirm, on: :member

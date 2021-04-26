@@ -1,9 +1,15 @@
 class HospitalsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:search, :filter, :show]
   before_action :set_hospital, only: %i[ show edit update destroy ]
 
   # GET /hospitals or /hospitals.json
   def index
     @hospitals = Hospital.all
+  end
+
+  def search
+    @hospitals = Hospital.filter(params)
+    render template: 'hospitals/search'
   end
 
   # GET /hospitals/1 or /hospitals/1.json
@@ -57,7 +63,7 @@ class HospitalsController < ApplicationController
   def destroy
     @hospital.destroy
     respond_to do |format|
-      format.html { redirect_to hospitals_url, notice: "Hospital was successfully destroyed." }
+      format.html { redirect_to hospitals_path, notice: "Hospital was successfully destroyed." }
       format.json { head :no_content }
     end
   end
