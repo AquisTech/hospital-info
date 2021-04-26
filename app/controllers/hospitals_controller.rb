@@ -4,12 +4,11 @@ class HospitalsController < ApplicationController
 
   # GET /hospitals or /hospitals.json
   def index
-    @hospitals = Hospital.all
+    @hospitals = Hospital.all.page(params[:page])
   end
 
   def search
-    @hospitals = Hospital.filter(params)
-    render template: 'hospitals/search'
+    @hospitals = Hospital.filter(params).page(params[:page])
   end
 
   # GET /hospitals/1 or /hospitals/1.json

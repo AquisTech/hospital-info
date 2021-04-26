@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :identities
   resources :hospitals do
     get :search, on: :collection
-    post :search, on: :collection, as: :filter
   end
   devise_for :users
   resources :users do

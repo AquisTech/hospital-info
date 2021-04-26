@@ -27,3 +27,5 @@
         %td= link_to 'Show', hospital, class: 'btn btn-info'
         %td= link_to 'Edit', edit_hospital_path(hospital), class: 'btn btn-primary'
         %td= link_to 'Delete', hospital, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+#pagination
+  = paginate @hospitals

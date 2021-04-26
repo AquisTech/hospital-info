@@ -1,0 +1,32 @@
+#search-results
+  %table.table.table-hover.table-bordered.table-striped
+    %thead
+      %tr
+        %th Name
+        %th{ colspan: 2 } Gen Beds
+        %th{ colspan: 2 } Oxygen Beds
+        %th{ colspan: 2 } ICU Beds
+        %th{ colspan: 2 } Ventilators
+        %th.text-center Actions
+
+    %tbody
+      - unless @hospitals.present?
+        %tr
+          %td{ colspan: 20 }
+            .alert.alert-warning.text-center
+              No records found. Please try changing criteria.
+      - else
+        - @hospitals.each do |hospital|
+          %tr
+            %td= hospital.name
+            %td.text-success= hospital.vacant_gen_beds || '-'
+            %td.text-danger= hospital.occupied_gen_beds || '-'
+            %td.text-success= hospital.vacant_o2_beds || '-'
+            %td.text-danger= hospital.occupied_o2_beds || '-'
+            %td.text-success= hospital.vacant_icu_beds || '-'
+            %td.text-danger= hospital.occupied_icu_beds || '-'
+            %td.text-success= hospital.vacant_ventilators || '-'
+            %td.text-danger= hospital.occupied_ventilators || '-'
+            %td= link_to 'Details', hospital, class: 'btn btn-info'
+  #pagination
+    = paginate @hospitals, remote: true

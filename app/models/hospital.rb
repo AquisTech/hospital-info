@@ -13,8 +13,16 @@ class Hospital < ApplicationRecord
   def self.filter(params)
     records = Hospital.all
     records = records.where("UPPER(name) LIKE '%#{params[:name].upcase}%'") if params[:name].present?
-    if params[:pincode].present?
-      records = records.joins(:addresses).where("addresses.pincode LIKE '%#{params[:pincode]}%'")
+    if params[:pincode].present? || params[:area].present?
+      records = records.joins(:addresses)
+      records = records.where("addresses.pincode LIKE '%#{params[:pincode]}%'") if params[:pincode].present?
+      records = records.where("
+        UPPER(addresses.address_line_1) LIKE '%#{params[:area].upcase}%' OR
+        UPPER(addresses.address_line_2) LIKE '%#{params[:area].upcase}%' OR
+        UPPER(addresses.area) LIKE '%#{params[:area].upcase}%' OR
+        UPPER(addresses.city) LIKE '%#{params[:area].upcase}%' OR
+        UPPER(addresses.district) LIKE '%#{params[:area].upcase}%' OR
+        UPPER(addresses.state) LIKE '%#{params[:area].upcase}%'") if params[:area].present?
     end
     availability_query = []
     [:gen_beds, :o2_beds, :icu_beds, :ventilators].each do |attr|

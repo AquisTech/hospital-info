@@ -21,7 +21,7 @@ puts 'Populating Hospitals...'
 
 require 'csv'
 
-CSV.foreach('db/data/hospitals-mini.csv', headers: true, col_sep: '~') do |row|
+CSV.foreach('db/data/hospitals.csv', headers: true, col_sep: '~') do |row|
   data = row.to_h
   h_data = {
     name: data["Hospital_Name"],
