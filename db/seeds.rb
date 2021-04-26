@@ -17,6 +17,7 @@ if admin.save
   puts 'Admin created!'
 else
   puts "Admin creation failed! #{admin.errors.full_messages.to_sentence}"
+end
 puts 'Populating Hospitals...'
 
 require 'csv'
