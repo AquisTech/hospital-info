@@ -29,4 +29,5 @@
             %td.text-danger= hospital.occupied_ventilators || '-'
             %td= link_to 'Details', hospital, class: 'btn btn-info'
   #pagination
-    = paginate @hospitals, remote: true
+    = page_entries_info @hospitals
+    = paginate @hospitals, remote: true, window: 2

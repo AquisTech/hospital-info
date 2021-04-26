@@ -18,6 +18,7 @@ if admin.save
 else
   puts "Admin creation failed! #{admin.errors.full_messages.to_sentence}"
 end
+
 puts 'Populating Hospitals...'
 
 require 'csv'
@@ -25,7 +26,7 @@ require 'csv'
 CSV.foreach('db/data/hospitals.csv', headers: true, col_sep: '~') do |row|
   data = row.to_h
   h_data = {
-    name: data["Hospital_Name"],
+    name: "#{data['Hospital_Name']}, #{data['area'] || data['city']}",
     addresses_attributes: {
       0 => {
         address_type: "main",
